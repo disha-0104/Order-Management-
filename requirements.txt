@@ -1,0 +1,17 @@
+#OpenAI 
+openai.api_type = "azure"
+openai.api_version = "2024-05-13"
+openai.api_key = os.getenv("OPENAI_API_KEY", "6a60f12e70d9417398c13154501c6c21")
+endpoint = "https://bhoomi02.openai.azure.com/openai/deployments/chatbot/chat/completions?api-version=2024-02-15-preview"
+ 
+
+import os
+import json
+import logging
+import sqlite3
+from aiohttp import web
+
+from botbuilder.dialogs import ComponentDialog, WaterfallDialog, WaterfallStepContext, DialogTurnResult
+from botbuilder.dialogs.prompts import TextPrompt, PromptOptions
+from botbuilder.core import ActivityHandler, TurnContext, BotFrameworkAdapter, BotFrameworkAdapterSettings, MemoryStorage, ConversationState, MessageFactory
+from botbuilder.schema import Activity, ActivityTypes, InputHints
